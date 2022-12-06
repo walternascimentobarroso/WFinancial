@@ -1,6 +1,8 @@
 import { useState } from "react";
 
+import DateTime from "./components/general/Datetime";
 import CardResume from "./components/project/cardResume/CardResume";
+import DateArea from "./components/project/dateArea/DateArea";
 import Header from "./components/project/header/Header";
 import Table from "./components/project/table/Table";
 
@@ -31,6 +33,9 @@ export default function App() {
   return (
     <div>
       <Header title={"WFinancial"} />
+
+      <DateArea />
+
       <div className="flex mx-auto max-w-7xl items-center justify-around">
         <CardResume title={"Saldo"} descrition={"R$ 1.000,00"} />
         <CardResume
@@ -45,6 +50,10 @@ export default function App() {
         />
       </div>
       <Table data={list} />
+
+      <footer>
+        <DateTime />
+      </footer>
     </div>
   );
 }
