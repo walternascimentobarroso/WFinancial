@@ -1,6 +1,10 @@
 import { useState } from "react";
 
+/* General components */
 import DateTime from "./components/general/datetime/Datetime";
+import Button from "./components/general/button/Button";
+
+/* Project components */
 import InputCustom from "./components/project/inputCustom/InputCustom";
 import CardResume from "./components/project/cardResume/CardResume";
 import DateArea from "./components/project/dateArea/DateArea";
@@ -61,6 +65,9 @@ export default function App() {
           iconRight="R$"
           placeholder={"0.00"}
         />
+        <div className="mt-7">
+          <Button name={"Adicionar"} />
+        </div>
       </div>
 
       <Table data={list} />
