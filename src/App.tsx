@@ -10,6 +10,7 @@ import CardResume from "./components/project/cardResume/CardResume";
 import DateArea from "./components/project/dateArea/DateArea";
 import Header from "./components/project/header/Header";
 import Table from "./components/project/table/Table";
+import Select from "./components/general/select/Select";
 
 const data = [
   {
@@ -32,8 +33,20 @@ const data = [
   },
 ];
 
+const options = [
+  {
+    title: "Entrada",
+    type: "in",
+  },
+  {
+    title: "Saída",
+    type: "out",
+  },
+];
+
 export default function App() {
   const [list, setList] = useState(data);
+  const [listOptions, setListOptions] = useState(options);
 
   return (
     <div>
@@ -56,14 +69,15 @@ export default function App() {
       </div>
 
       <div className="flex mx-auto max-w-7xl items-center justify-between">
-        <InputCustom label="Date" type="date" />
-        <InputCustom label="Category" placeholder={"Category"} />
-        <InputCustom label="Title" placeholder={"Title"} />
+        <InputCustom label="Date" type="date" name={"date"} />
+        <Select label="Category" options={listOptions} name={"category"} />
+        <InputCustom label="Title" placeholder={"Title"} name={"title"} />
         <InputCustom
           label="Value"
           type="number"
           iconRight="R$"
           placeholder={"0.00"}
+          name={"value"}
         />
         <div className="mt-7">
           <Button name={"Adicionar"} />

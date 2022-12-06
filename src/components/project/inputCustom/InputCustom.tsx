@@ -2,14 +2,12 @@ export default function InputCustom({
   iconRight = false,
   label,
   placeholder,
+  name,
   type = "text",
 }: any) {
   return (
     <div className="py-4">
-      <label
-        htmlFor="price"
-        className="block text-sm font-medium text-gray-700"
-      >
+      <label htmlFor={name} className="block text-sm font-medium text-gray-700">
         {label}
       </label>
       <div className="relative mt-1 rounded-md shadow-sm">
@@ -18,8 +16,8 @@ export default function InputCustom({
         </div>
         <input
           type={type}
-          name="price"
-          id="price"
+          name={name}
+          id={name}
           className={`block w-full rounded-md border-gray-300 ${
             iconRight && "pl-8"
           } focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm`}
