@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import CardResume from "./components/project/cardResume/CardResume";
 import Header from "./components/project/header/Header";
 import Table from "./components/project/table/Table";
 
@@ -30,7 +31,19 @@ export default function App() {
   return (
     <div>
       <Header title={"WFinancial"} />
-
+      <div className="flex mx-auto max-w-7xl items-center justify-around">
+        <CardResume title={"Saldo"} descrition={"R$ 1.000,00"} />
+        <CardResume
+          title={"Entrada"}
+          descrition={"R$ 1.000,00"}
+          color={"red"}
+        />
+        <CardResume
+          title={"Saída"}
+          descrition={"R$ 1.000,00"}
+          color={"green"}
+        />
+      </div>
       <Table data={list} />
     </div>
   );
