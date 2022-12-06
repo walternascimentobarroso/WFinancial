@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-import DateTime from "./components/general/Datetime";
+import DateTime from "./components/general/datetime/Datetime";
+import InputCustom from "./components/project/inputCustom/InputCustom";
 import CardResume from "./components/project/cardResume/CardResume";
 import DateArea from "./components/project/dateArea/DateArea";
 import Header from "./components/project/header/Header";
@@ -49,6 +50,19 @@ export default function App() {
           color={"green"}
         />
       </div>
+
+      <div className="flex mx-auto max-w-7xl items-center justify-between">
+        <InputCustom label="Date" type="date" />
+        <InputCustom label="Category" placeholder={"Category"} />
+        <InputCustom label="Title" placeholder={"Title"} />
+        <InputCustom
+          label="Value"
+          type="number"
+          iconRight="R$"
+          placeholder={"0.00"}
+        />
+      </div>
+
       <Table data={list} />
 
       <footer>
