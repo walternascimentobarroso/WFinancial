@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 /* General components */
 import DateTime from "./components/general/datetime/Datetime";
@@ -20,13 +20,13 @@ const data = [
     value: 4500,
   },
   {
-    date: new Date(2022, 12, 15).toLocaleDateString(),
+    date: new Date(2022, 10, 12).toLocaleDateString(),
     category: "salary",
     title: "Salário ACME",
     value: 4500,
   },
   {
-    date: new Date(2022, 12, 17).toLocaleDateString(),
+    date: new Date(2022, 11, 12).toLocaleDateString(),
     category: "salary",
     title: "Salário ACME",
     value: 4500,
@@ -44,15 +44,36 @@ const options = [
   },
 ];
 
+const getCurrentMonth = (date: any) =>
+  new Date(date).toLocaleString("default", { month: "long", year: "numeric" });
+
 export default function App() {
   const [list, setList] = useState(data);
   const [listOptions, setListOptions] = useState(options);
+
+  const [date, setDate] = useState(new Date());
+  const [month, setMonth] = useState(getCurrentMonth(date));
+
+  const editMonth = (months: number) => {
+    const oldDate = date;
+    oldDate.setMonth(oldDate.getMonth() + months);
+    setDate(oldDate);
+    setMonth(getCurrentMonth(oldDate));
+  };
+
+  useEffect(() => {
+    setList(data.filter((e) => month == getCurrentMonth(e.date)));
+  }, [month]);
 
   return (
     <div>
       <Header title={"WFinancial"} />
 
-      <DateArea />
+      <DateArea
+        actionNextMonth={() => editMonth(1)}
+        actionPrevMonth={() => editMonth(-1)}
+        currentMonth={month}
+      />
 
       <div className="flex mx-auto max-w-7xl items-center justify-around">
         <CardResume title={"Saldo"} descrition={"R$ 1.000,00"} />
