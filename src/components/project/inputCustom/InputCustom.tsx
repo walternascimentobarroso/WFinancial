@@ -4,6 +4,8 @@ export default function InputCustom({
   placeholder,
   name,
   type = "text",
+  value,
+  onChange,
 }: any) {
   return (
     <div className="py-4">
@@ -22,6 +24,8 @@ export default function InputCustom({
             iconRight && "pl-8"
           } focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm`}
           placeholder={placeholder}
+          value={value}
+          onChange={onChange}
         />
       </div>
     </div>

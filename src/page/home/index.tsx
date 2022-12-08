@@ -54,6 +54,10 @@ export default function HomePage() {
   const [date, setDate] = useState(new Date());
   const [month, setMonth] = useState(getCurrentMonth(date));
 
+  const [formDate, setFormDate] = useState(new Date());
+  const [formTitle, setFormTitle] = useState("");
+  const [formValue, setFormValue] = useState(0);
+
   const editMonth = (months: number) => {
     const oldDate = date;
     oldDate.setMonth(oldDate.getMonth() + months);
@@ -64,6 +68,12 @@ export default function HomePage() {
   useEffect(() => {
     setList(data.filter((e) => month == getCurrentMonth(e.date)));
   }, [month]);
+
+  useEffect(() => {
+    console.log(formDate);
+    console.log(formTitle);
+    console.log(formValue);
+  }, [formDate, formTitle, formValue]);
 
   return (
     <div>
@@ -90,15 +100,29 @@ export default function HomePage() {
       </div>
 
       <div className="flex mx-auto max-w-7xl items-center justify-between">
-        <InputCustom label="Date" type="date" name={"date"} />
+        <InputCustom
+          label="Date"
+          type="date"
+          name={"date"}
+          value={formDate}
+          onChange={setFormDate}
+        />
         <Select label="Category" options={listOptions} name={"category"} />
-        <InputCustom label="Title" placeholder={"Title"} name={"title"} />
+        <InputCustom
+          label="Title"
+          placeholder={"Title"}
+          name={"title"}
+          value={formTitle}
+          onChange={setFormTitle}
+        />
         <InputCustom
           label="Value"
           type="number"
           iconRight="R$"
           placeholder={"0.00"}
           name={"value"}
+          value={formValue}
+          onChange={setFormValue}
         />
         <div className="mt-7">
           <Button name={"Adicionar"} />
