@@ -25,7 +25,7 @@ export default function InputCustom({
           } focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm`}
           placeholder={placeholder}
           value={value}
-          onChange={onChange}
+          onChange={(e) => onChange(e.target.value)}
         />
       </div>
     </div>
