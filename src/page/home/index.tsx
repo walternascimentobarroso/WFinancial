@@ -69,6 +69,11 @@ export default function HomePage() {
     setList(data.filter((e) => month == getCurrentMonth(e.date)));
   }, [month]);
 
+  function saveForm() {
+    console.log(formDate);
+    console.log(formTitle);
+    console.log(formValue);
+  }
   useEffect(() => {
     console.log(formDate);
     console.log(formTitle);
@@ -125,7 +130,7 @@ export default function HomePage() {
           onChange={setFormValue}
         />
         <div className="mt-7">
-          <Button name={"Adicionar"} />
+          <Button name={"Adicionar"} onClick={() => saveForm()} />
         </div>
       </div>
 
