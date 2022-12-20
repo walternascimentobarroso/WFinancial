@@ -70,15 +70,20 @@ export default function HomePage() {
   }, [month]);
 
   function saveForm() {
-    console.log(formDate);
-    console.log(formTitle);
-    console.log(formValue);
+    let [dayDate, monthDate, yearDate] = new Date(formDate)
+      .toLocaleDateString()
+      .split("/");
+
+    data.push({
+      date: `${monthDate}/${dayDate}/${yearDate}`,
+      category: "salary",
+      title: formTitle,
+      value: formValue,
+    });
+
+    let result = data.filter((e) => month == getCurrentMonth(e.date));
+    setList(() => result);
   }
-  useEffect(() => {
-    console.log(formDate);
-    console.log(formTitle);
-    console.log(formValue);
-  }, [formDate, formTitle, formValue]);
 
   return (
     <div>
